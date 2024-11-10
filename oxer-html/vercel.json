@@ -1,5 +1,27 @@
+
+It seems there might be an issue with the way Vercel is handling the rewrites configuration, especially if it's not redirecting as expected.
+
+To address the problem, you can try these steps:
+
+1. Ensure the vercel.json file is correctly placed in the root directory of your project.
+2. Update your vercel.json to include headers and rewrites for proper routing.
+Try the following code for vercel.json:
+
+json
+Copy code
 {
   "rewrites": [
     { "source": "/", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    }
   ]
 }
